@@ -4,9 +4,7 @@ import { defineConfig } from 'astro/config';
 import strife from '@strifeapp/astro';
 import Homes from './src/collections/Homes';
 
-//import vercel from '@astrojs/vercel';
-
-import node from '@astrojs/node';
+import vercel from '@astrojs/vercel';
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,7 +13,10 @@ export default defineConfig({
   })],
 
   output: 'server',
-  adapter: node({
-    mode: 'standalone',
-  }),
+  adapter: vercel(),
+  vite: {
+    ssr: {
+      external: ['ravendb'],
+    },
+  },
 });
