@@ -16,7 +16,7 @@ export default defineConfig({
   adapter: vercel(),
   vite: {
     ssr: {
-      noExternal: ['ravendb'],
+      external: ['@strifeapp/astro'],
     },
   },
 });
