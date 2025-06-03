@@ -9,10 +9,14 @@ import tailwindcss from '@tailwindcss/vite';
 
 import svelte from '@astrojs/svelte';
 
+import strife from '@strifeapp/astro';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://hello-astro-gold.vercel.app',
-  integrations: [svelte()],
+  integrations: [strife({
+    collections: [Homes],
+  }),svelte()],
 
   output: 'server',
   adapter: vercel(),
