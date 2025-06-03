@@ -1,7 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
-import strife from '@strifeapp/astro';
 import Homes from './src/collections/Homes';
 
 import vercel from '@astrojs/vercel';
@@ -18,6 +17,6 @@ export default defineConfig({
   adapter: vercel(),
   vite: {
     plugins: [tailwindcss()],
-    ssr: { noExternal: ["@strifeapp/strife", "ravendb"] },
+    ssr: { noExternal: ["@strifeapp/strife"] },
   },
 });
