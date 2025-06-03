@@ -9,24 +9,15 @@ import Footer from '../components/Footer.astro';
 //import { store, type IDocumentSession } from 'strife:store';
 import store from '../store';
 import type { IDocumentSession } from 'ravendb';
-import { QueryStatistics } from "ravendb";
 import type { Home } from '../types/Home';
 
 const session: IDocumentSession = store.openSession();
-let stats: QueryStatistics = new QueryStatistics();
 
 const home: Home = (await session
 	.query({ indexName: 'Content/ByUrl' })
 	.whereEquals('url', '/')
 	.selectFields(['eyebrow', 'heading', 'description', 'image'])
-	.statistics(s => stats = s)
 	.firstOrNull()) as Home;
-
-const numberOfResults = stats.totalResults;
-const queryDuration = stats.durationInMs;
-const indexNameUsed = stats.indexName;
-
-console.log(numberOfResults, queryDuration, indexNameUsed);
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
