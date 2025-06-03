@@ -1,6 +1,11 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Hero from '../components/Hero.svelte';
+import Services from '../components/Services.astro';
+import About from '../components/About.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
 import { store, type IDocumentSession } from 'strife:store';
 import { QueryStatistics } from "ravendb";
 import type { Home } from '../types/Home';
@@ -11,20 +16,25 @@ let stats: QueryStatistics = new QueryStatistics();
 const home: Home = (await session
 	.query({ indexName: 'Content/ByUrl' })
 	.whereEquals('url', '/')
-	.selectFields(['heading', 'description'])
+	.selectFields(['eyebrow', 'heading', 'description'])
 	.statistics(s => stats = s)
 	.firstOrNull()) as Home;
 
-const numberOfResults = stats.totalResults; // Get results count
-const queryDuration = stats.durationInMs;   // Get query duration
-const indexNameUsed = stats.indexName;      // Get index name used in query
+const numberOfResults = stats.totalResults;
+const queryDuration = stats.durationInMs;
+const indexNameUsed = stats.indexName;
 
-console.log(numberOfResults, queryDuration, indexNameUsed, home.description);
+console.log(numberOfResults, queryDuration, indexNameUsed, home?.description);
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-  <Welcome heading={home.heading} />
+  <Navigation />
+  <Hero eyebrow={home?.eyebrow} heading={home?.heading} description={home?.description} client:load />
+  <Services />
+  <About />
+  <Contact />
+  <Footer />
 </Layout>

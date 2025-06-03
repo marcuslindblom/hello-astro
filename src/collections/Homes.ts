@@ -7,6 +7,20 @@ const Homes: Template = {
   type: 'Homes',
   editors: [
     {
+      label: 'Eyebrow',
+      description: '',
+      editor: {
+        name: 'str-input',
+        type: 'text',
+        propertyName: 'eyebrow',
+        attributes: {
+          required: true,
+          validationText: 'Enter a eyebrow.',
+        },
+      },
+      searchable: false,
+    },
+    {
       label: 'Heading',
       description: '',
       editor: {

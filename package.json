@@ -9,10 +9,17 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/svelte": "^7.1.0",
     "@astrojs/vercel": "^8.1.4",
     "@strifeapp/astro": "^1.0.7",
+    "@strifeapp/strife": "^0.5.0-alpha",
+    "@tailwindcss/vite": "^4.1.8",
     "astro": "^5.8.0",
-    "ravendb": "^6.0.0"
+    "lucide-astro": "^0.511.0",
+    "ravendb": "^6.0.0",
+    "svelte": "^5.33.14",
+    "tailwindcss": "^4.1.8",
+    "typescript": "^5.8.3"
   },
   "devDependencies": {
     "@strifeapp/types": "^0.0.5"

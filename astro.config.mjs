@@ -6,18 +6,20 @@ import Homes from './src/collections/Homes';
 
 import vercel from '@astrojs/vercel';
 
+import tailwindcss from '@tailwindcss/vite';
+
+import svelte from '@astrojs/svelte';
+
 // https://astro.build/config
 export default defineConfig({
   integrations: [strife({
     collections: [Homes]
-  })],
+  }), svelte()],
 
   output: 'server',
   adapter: vercel(),
   vite: {
-    ssr: {
-      external: ['ravendb', '@strifeapp/astro'],
-    },
-    build: { rollupOptions: { external: (id) => id.startsWith("node:") } },
+    plugins: [tailwindcss()],
+    ssr: { noExternal: ["@strifeapp/strife"] },
   },
 });
