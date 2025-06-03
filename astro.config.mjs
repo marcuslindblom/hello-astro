@@ -18,6 +18,6 @@ export default defineConfig({
   adapter: vercel(),
   vite: {
     plugins: [tailwindcss()],
-    ssr: { noExternal: ["@strifeapp/strife"] },
+    ssr: { noExternal: ["@strifeapp/strife", "ravendb"] },
   },
 });

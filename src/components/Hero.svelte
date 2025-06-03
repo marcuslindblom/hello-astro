@@ -27,7 +27,7 @@
             {eyebrow}
           </div>
           <h1 class="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-            {heading || "Förnybar energi för ett"}
+            {heading}
             <span class="bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent block">
               hållbart Kalmar
             </span>
