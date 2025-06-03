@@ -1,21 +1,23 @@
 <script lang="ts">
   import { subscribe } from '@strifeapp/strife';
+  import type { Image } from '@strifeapp/types';
   import { onMount } from 'svelte';
 
   export let eyebrow: string | undefined;
   export let heading: string | undefined;
   export let description: string | undefined;
+  export let image: Image | undefined;
   onMount(() => {
     subscribe((data:any) => {
-      ({eyebrow, heading, description} = data);
+      ({eyebrow, heading, description, image} = data);
     });
   });
 </script>
 
-<section id="home" class="pt-16 min-h-[1000px] bg-gradient-to-br from-emerald-50 via-blue-50 to-white relative overflow-hidden">
+<section id="home" class="pt-16 bg-gradient-to-br from-emerald-50 via-blue-50 to-white relative overflow-hidden">
   <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-emerald-100 via-transparent to-blue-100 opacity-70"></div>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-    <div class="grid lg:grid-cols-2 gap-12 items-center min-h-[1000px] py-20">
+    <div class="grid lg:grid-cols-2 gap-12 items-center py-20">
       <div class="space-y-8">
         <div class="space-y-4">
           <div class="inline-flex items-center px-4 py-2 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium">
@@ -66,9 +68,11 @@
       <div class="relative">
         <div class="relative z-10">
           <img
-            src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-            alt="Vindkraftverk"
-            class="rounded-2xl shadow-2xl hover:scale-105 transition-transform duration-500"
+            src={image?.source.url || 'data:,'}
+            alt={image?.alt}
+            class="rounded-2xl shadow-2xl hover:scale-105 transition-transform duration-500 w-full h-auto"
+            height={image?.source.height || 534}
+            width={image?.source.width || 800}
           />
         </div>
         <div class="absolute -top-8 -right-8 w-72 h-72 bg-gradient-to-br from-emerald-200 to-blue-200 rounded-full opacity-30 blur-3xl"></div>

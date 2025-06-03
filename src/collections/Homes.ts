@@ -48,6 +48,20 @@ const Homes: Template = {
       },
       searchable: false,
     },
+    {
+      label: 'Image',
+      description: '',
+      editor: {
+        name: 'str-image',
+        type: 'image',
+        propertyName: 'image',
+        attributes: {
+          width: 800,
+          height: 534,
+          format: 'webp',
+        }
+      },
+    }
   ],
   templateType: 'dt',
   normalizedName: 'homes',

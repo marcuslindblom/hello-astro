@@ -1,1 +1,42 @@
 @import "tailwindcss";
+
+:root {
+  --str-placeholder-text-opacity: 0.2;
+  --str-placeholder-background-color: lch(32 37.46 264.17);
+  --str-placeholder-background-opacity: 0.8;
+}
+
+:where([data-placeholder]:empty)::before {
+  color: inherit;
+
+  opacity: var(--str-placeholder-text-opacity);
+
+  content: attr(data-placeholder);
+}
+
+:where(img[src="data:,"]) {
+  outline: solid 1px var(--str-placeholder-background-color);
+  opacity: var(--str-placeholder-background-opacity);
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: #fff;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        45deg,
+        var(--str-placeholder-background-color) 0,
+        transparent 1px,
+        transparent 0,
+        transparent 50%
+      )
+      0 0 / 15px 15px;
+  }
+}
