@@ -17,7 +17,7 @@
     "@tailwindcss/vite": "^4.1.8",
     "astro": "^5.8.0",
     "lucide-astro": "^0.511.0",
-    "ravendb": "^6.0.0",
+    "ravendb": "^5.4.3",
     "svelte": "^5.33.14",
     "tailwindcss": "^4.1.8",
     "typescript": "^5.8.3"
