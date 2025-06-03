@@ -11,7 +11,7 @@ let stats: QueryStatistics = new QueryStatistics();
 const home: Home = (await session
 	.query({ indexName: 'Content/ByUrl' })
 	.whereEquals('url', '/')
-	.selectFields(['displayName', 'description'])
+	.selectFields(['heading', 'description'])
 	.statistics(s => stats = s)
 	.firstOrNull()) as Home;
 
@@ -26,5 +26,5 @@ console.log(numberOfResults, queryDuration, indexNameUsed, home.description);
 ---
 
 <Layout>
-  <Welcome heading={home.displayName} />
+  <Welcome heading={home.heading} />
 </Layout>
